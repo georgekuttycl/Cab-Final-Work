@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="/static/css/login.css" />
+<main class="form-signin w-100 m-auto text-center">
+  <form id="login" action="/login" name="signInForm" method="post">
+    <img class="mb-4" src="/static/images/lwakxzzc-removebg-preview.png" alt="" width="100" height="100">
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" required=""
+        autocomplete="off" name="loginemail">
+      <label for="floatingInput">Email address</label>
+    </div>
+    <label class="form-label" id="login_mssge"></label>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required=""
+        autocomplete="off" name="loginpassword">
+      <label for="floatingPassword">Password</label>
+    </div>
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a id="register-link" href="register.html" data-bs-toggle="modal" data-bs-target="#exampleModal">Sign Up</a>
+      </label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+
+  </form>
+</main>
+<!--Model-->
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Register Your Account</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" name="signupForm">
+
+          <div class="form-floating">
+            <input type="text" class="form-control" id="reg-email" placeholder="name@example.com" name="email">
+            <label for="floatingInput">Email address</label>
+          </div>
+          <label class="form-label" id="error_mssge"></label>
+          <br />
+          <div class="form-floating">
+            <input type="text" class="form-control" id="reg-mobile" placeholder="name@example.com" name="mobile">
+            <label for="floatingInput">Mobile Number</label>
+          </div>
+          <br />
+          <div class="form-floating">
+            <select class="form-control" name="chooseRole">
+               <option value="">Choose...</option>
+              <option value="passenger">Passenger</option>
+              <option value="driver">Driver</option>
+            </select>
+            <label for="floatingInput">Choose Role</label>
+          </div>
+          <label class="form-label" id="error_mssge1"></label>
+          <br />
+          <div class="form-floating">
+            <input type="password" class="form-control" id="reg-password" placeholder="Password" name="password">
+            <label for="floatingPassword">Password</label>
+          </div>
+          <label class="form-label" id="error_mssge2"></label>
+          <br />
+          <div class="form-floating">
+            <input type="password" class="form-control" id="reg-cpassword" placeholder="Password" name="cpassword">
+            <label for="floatingPassword">Confirm Password</label>
+          </div>
+          <label class="form-label" id="error_mssge3"></label>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn" id="savebtn">Register</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
