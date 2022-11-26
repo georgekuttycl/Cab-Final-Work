@@ -1,5 +1,5 @@
 
 
 module.exports.getProfile = (req, res, next) => {
-    res.render('cab-profile');
+    res.render('profile');
 }

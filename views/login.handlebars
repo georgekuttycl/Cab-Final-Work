@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/static/css/login.css" />
 <main class="form-signin w-100 m-auto text-center">
-  <form id="login" action="/login" name="signInForm" method="post">
+  <form id="login" name="signInForm" method="post">
     <img class="mb-4" src="/static/images/lwakxzzc-removebg-preview.png" alt="" width="100" height="100">
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
@@ -15,6 +15,7 @@
         autocomplete="off" name="loginpassword">
       <label for="floatingPassword">Password</label>
     </div>
+     <input type="hidden" name="type" value="signin">
     <div class="checkbox mb-3">
       <label>
         <input type="checkbox" value="remember-me"> Remember me
@@ -31,7 +32,14 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+{{#if regError}}
+style="display: block;"
+class="modal fade show"
+{{else}}
+class="modal fade"
+{{/if}}
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -40,7 +48,23 @@
       </div>
       <div class="modal-body">
         <form method="post" name="signupForm">
-
+          <div class="row">
+            <div class="col-6">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="reg-firstName" placeholder="name@example.com"
+                  name="firstName">
+                <label for="floatingInput">First Name</label>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="reg-lastName" placeholder="name@example.com"
+                  name="lastName">
+                <label for="floatingInput">Last Name</label>
+              </div>
+            </div>
+          </div>
+          <br/>
           <div class="form-floating">
             <input type="text" class="form-control" id="reg-email" placeholder="name@example.com" name="email">
             <label for="floatingInput">Email address</label>
@@ -54,7 +78,7 @@
           <br />
           <div class="form-floating">
             <select class="form-control" name="chooseRole">
-               <option value="">Choose...</option>
+              <option value="">Choose...</option>
               <option value="passenger">Passenger</option>
               <option value="driver">Driver</option>
             </select>
@@ -72,6 +96,7 @@
             <input type="password" class="form-control" id="reg-cpassword" placeholder="Password" name="cpassword">
             <label for="floatingPassword">Confirm Password</label>
           </div>
+          <input type="hidden" name="type" value="signup">
           <label class="form-label" id="error_mssge3"></label>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>

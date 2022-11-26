@@ -7,7 +7,16 @@ const login = db.sequelize.define('login', {
         primaryKey: true,
         autoIncrement: true
     },
-
+    firstname: {
+        type: DataTypes.STRING(50),
+        allowNull: false,
+        unique: true
+    },
+    lastname: {
+        type: DataTypes.STRING(50),
+        allowNull: false,
+        unique: true
+    },
     email: {
         type: DataTypes.STRING(50),
         allowNull: false,
