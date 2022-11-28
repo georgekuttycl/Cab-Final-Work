@@ -15,6 +15,7 @@
                         <li><a href="#" class="text-white">Follow on Twitter</a></li>
                         <li><a href="#" class="text-white">Like on Facebook</a></li>
                         <li><a href="/login" class="text-white">Login</a></li>
+                         <li><a href="/logout" class="text-white">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -31,19 +32,34 @@
             <a href="index.html" id="alink">Home</a>
             <a id="alink2">About</a>
             <div class="dropdown" id="alink3">
+                {{!-- navbar menu for passenger --}}
                  {{#if data.identity.isAuthenticated}}
+                     {{#if data.identity.isPassenger}}
                <a id="Booking" class="dropdown-toggle" type="text" data-bs-toggle="dropdown" aria-expanded="false">
                     Booking
                 </a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="Book.html">Book cab</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    {{!-- <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
                 </ul>
+                   {{/if}}
                 {{/if}}
 
                 {{#if data.identity.isAuthenticated}}
-                <a href="/profile" id="alink4">Profile</a>
+                 {{#if data.identity.isPassenger}}
+                <a id="Booking" class="dropdown-toggle" type="text" data-bs-toggle="dropdown" aria-expanded="false">
+                    Profile
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/passenger/createProfile">Create Profile</a></li>
+                    <li><a class="dropdown-item" href="/passenger/Profile">Show Profile</a></li>
+                    {{!-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
+                </ul>
+                {{/if}}
+                 {{#if data.identity.isDriver}}
+                <a href="/profile" id="alink4">Driver Profile</a>
+                {{/if}}
                 {{/if}}
 
             </div>

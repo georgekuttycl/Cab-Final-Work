@@ -10,8 +10,8 @@
 				<div class="user-avatar">
 					<img src="https://avatars.githubusercontent.com/u/83865174?v=4" alt="Maxwell Admin" class="rounded-circle" width="200" height="200">
 				</div>
-				<h5 class="user-name">Georgekutty CL</h5>
-				<h6 class="user-email">georgekuttycl@gmail.com</h6>
+				<h5 class="user-name">{{data.identity.user.firstname}} {{data.identity.user.lastname}}</h5>
+				<h6 class="user-email">{{data.identity.user.mobilenumber}}</h6>
 			</div>
 			<div class="about">
 				<h5>About</h5>
@@ -31,19 +31,19 @@
 			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 				<div class="form-group">
 					<label for="fullName">Full Name</label>
-					<input type="text" class="form-control" id="fullName" placeholder="Enter full name">
+					<input type="text" class="form-control" id="fullName" placeholder="Enter full name" value="{{data.identity.user.firstname}} {{data.identity.user.lastname}}">
 				</div>
 			</div>
 			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 				<div class="form-group">
 					<label for="eMail">Email</label>
-					<input type="email" class="form-control" id="eMail" placeholder="Enter email ID">
+					<input type="email" class="form-control" id="eMail" placeholder="Enter email ID" value="{{data.identity.user.email}} ">
 				</div>
 			</div>
 			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 				<div class="form-group">
 					<label for="phone">Phone</label>
-					<input type="text" class="form-control" id="phone" placeholder="Enter phone number">
+					<input type="text" class="form-control" id="phone" placeholder="Enter phone number" value="{{data.dataValues.mobileNumber}} ">
 				</div>
 			</div>
 			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">

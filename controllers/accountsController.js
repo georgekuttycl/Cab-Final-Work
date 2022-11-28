@@ -41,10 +41,16 @@ module.exports.loginPost = async (req, res, next) => {
 		if (userFromDb.dataValues.role == "passenger") {
 			return res.redirect("/");
 		} else if (userFromDb.dataValues.role == "driver") {
-			return res.redirect("/indexDriver");
+			return res.redirect("/");
 		} else {
 			return res.redirect("/indexAdmin");
 		}
 		res.redirect("/");
   	}
 };
+
+module.exports.logout = (req,res,next)=>{
+	req.session = null;
+    res.redirect("/");
+
+}

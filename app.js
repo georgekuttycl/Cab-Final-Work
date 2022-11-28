@@ -2,6 +2,7 @@ const express = require('express');
 const parser = require('body-parser');
 const loginRoute = require('./routes/accounts')
 const indexRoute = require('./routes/index')
+const profileRoute = require('./routes/profile')
 const path = require('path');
 const cookieSession = require('cookie-session');
 const {engine, create} = require('express-handlebars');
@@ -53,20 +54,12 @@ app.use("/", (req, res, next)=>{
             res.send(rs);
         });
 
-        // hbs.render(path.join(__dirname, 'views', template + '.handlebars'),
-        // {mishel: 'poda patti'},
-        // {
-        //     layout: path.join(__dirname, 'views', 'layouts', 'main.handlebars'),
-        //     data: {mishel: 'hello'}
-        // }).then(html=>{
-        //     return res.send(html);
-
-        // });
     }
 
     next();
 })
 app.use(loginRoute);
 app.use(indexRoute);
+app.use(profileRoute);
 
 app.listen(80);

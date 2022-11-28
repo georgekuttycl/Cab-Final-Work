@@ -15,11 +15,24 @@ module.exports = async (req, res, next) => {
         req.identity.isAuthenticated = true;
         req.identity.user = {
             id: userFromDb.dataValues.id,
-            firstname: userFromDb.dataValues.firstName,
-            lastname: userFromDb.dataValues.lastName,
+            firstname: userFromDb.dataValues.firstname,
+            lastname: userFromDb.dataValues.lastname,
             email: userFromDb.dataValues.email,
-            chooseRole: userFromDb.dataValues.role
+            chooseRole: userFromDb.dataValues.role,
+
         }
+
+        if(userFromDb.dataValues.role == "passenger"){
+            req.identity.isPassenger = true;
+        }
+
+        else if(userFromDb.dataValues.role == "driver"){
+            req.identity.isDriver = true;
+        }
+        else {
+            req.identity.isAdmin = true;
+        }
+
     }
 
     if(req.url == "/" || req.url == "/login"){
