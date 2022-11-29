@@ -1,5 +1,6 @@
 const {sequelize, DataTypes} = require ('sequelize')
 const db = require('./db');
+const login = require('./login');
 
 const passenger = db.sequelize.define('passenger', {
     passengerId: {
@@ -27,7 +28,11 @@ const passenger = db.sequelize.define('passenger', {
 
     loginId:{
         type: DataTypes.INTEGER,
-        allowNull:false
+        allowNull:false,
+        references: {         // User belongsTo Company 1:1
+            model: login,
+            key: 'id'
+        }
     }
 
 });

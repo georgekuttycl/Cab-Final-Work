@@ -1,5 +1,6 @@
 const passenger = require("../models/passenger");
-const login = require("../models/login");
+const Login = require("../models/login");
+const { json } = require("body-parser");
 
 
 
@@ -9,15 +10,16 @@ module.exports.showProfile = (req, res, next) => {
 
 
   module.exports.getProfile = (req, res, next) => {
-    passenger.findAll({
-        include: [{all: true}]
+    passenger.findOne({
+        model: Login, as: 'Login'
     }).then(movies => {
+        console.log("movies", movies.get({plain: true}));
+        console.table(movies.dataValues)
 
         res.render('profile', {
             data: movies,
-
         });
-    })
+    });
 }
 
 
