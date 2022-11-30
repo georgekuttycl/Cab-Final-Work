@@ -1,8 +1,9 @@
 const express = require('express');
 const parser = require('body-parser');
-const loginRoute = require('./routes/accounts')
-const indexRoute = require('./routes/index')
-const profileRoute = require('./routes/profile')
+const loginRoute = require('./routes/accounts');
+const indexRoute = require('./routes/index');
+const profileRoute = require('./routes/profile');
+const bookingRoute = require('./routes/book');
 const path = require('path');
 const cookieSession = require('cookie-session');
 const {engine, create} = require('express-handlebars');
@@ -19,12 +20,12 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use("/", parser.urlencoded({extended: true}));
+
 app.use("/static", express.static(path.join(__dirname, 'static')));
 
-// app.use(loginRoute);
 
 
-// app.listen(80)
+
 app.use(cookieSession({
     name: 'login',
     httpOnly: true,
@@ -61,5 +62,6 @@ app.use("/", (req, res, next)=>{
 app.use(loginRoute);
 app.use(indexRoute);
 app.use(profileRoute);
+// app.use(bookingRoute);
 
 app.listen(80);

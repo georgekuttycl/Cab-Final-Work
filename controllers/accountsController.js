@@ -5,6 +5,10 @@ module.exports.login = (req, res, next) => {
   res.render("login", { regError: false });
 };
 
+module.exports.getAdmin = (req, res, next) => {
+	res.render("adminIndex", { regError: false });
+  };
+
 module.exports.loginPost = async (req, res, next) => {
 //   res.render("login");
 
@@ -32,7 +36,7 @@ module.exports.loginPost = async (req, res, next) => {
 		});
 		console.log(userFromDb);
 		if (userFromDb == null) {
-			return res.render("cab-login", {
+			return res.render("login", {
 				message: "No user with this email or password was found.",
 			});
 		}
@@ -43,7 +47,7 @@ module.exports.loginPost = async (req, res, next) => {
 		} else if (userFromDb.dataValues.role == "driver") {
 			return res.redirect("/");
 		} else {
-			return res.redirect("/indexAdmin");
+			return res.redirect("/admin/home");
 		}
 		res.redirect("/");
   	}

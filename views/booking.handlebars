@@ -1,0 +1,80 @@
+ {{>navbar}}
+ <link rel="stylesheet" href="/static/css/booking.css"/>
+ <div id="bgimg">
+  <div style="position: relative;
+    top: 116px;
+    right: 199px;">
+  <div class="container" id="container">
+    <div class="wrapper">
+      <ul class="steps">
+        <li class="is-active">Step 1</li>
+        <li>Step 2</li>
+        <li>Step 3</li>
+      </ul>
+      <form class="form-wrapper">
+        <fieldset class="section is-active" style="width: 676px;">
+          <h3>Your Details</h3>
+          <input type="text" name="from" id="from" placeholder="From">
+          <input type="text" name="to" id="to" placeholder="To">
+
+          <div class="button">Next</div>
+        </fieldset>
+        <fieldset class="section" style="width: 676px;">
+          <h3>Cab Type</h3>
+          <div class="row cf" id="size">
+            <div class="four col" >
+              <input type="radio" name="r1" id="r1" checked>
+              <label for="r1">
+                <h4>Standard</h4>
+              </label>
+            </div>
+            <div class="four col" >
+              <input type="radio" name="r1" id="r2"><label for="r2">
+                <h4>Classic</h4>
+              </label>
+            </div>
+            <div class="four col" >
+              <input type="radio" name="r1" id="r3"><label for="r3">
+                <h4>Premium</h4>
+              </label>
+            </div>
+          </div>
+          <div class="button">Next</div>
+        </fieldset>
+        <fieldset class="section" style="width: 676px;">
+          <h3>Choose a Password</h3>
+          <input type="password" name="password" id="password" placeholder="Password">
+          <input type="password" name="password2" id="password2" placeholder="Re-enter Password">
+          <input class="submit button" type="submit" value="Sign Up" >
+        </fieldset>
+        <fieldset class="section" style="width: 676px;">
+          <h3>Request Created!</h3>
+          <p>Your ride has now been initiated.</p>
+          <div class="button">Return</div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".form-wrapper .button").click(function(){
+      var button = $(this);
+      var currentSection = button.parents(".section");
+      var currentSectionIndex = currentSection.index();
+      var headerSection = $('.steps li').eq(currentSectionIndex);
+      currentSection.removeClass("is-active").next().addClass("is-active");
+      headerSection.removeClass("is-active").next().addClass("is-active");
+
+      $(".form-wrapper").submit(function(e) {
+        e.preventDefault();
+      });
+
+      if(currentSectionIndex === 3){
+        $(document).find(".form-wrapper .section").first().addClass("is-active");
+        $(document).find(".steps li").first().addClass("is-active");
+      }
+    });
+  });
+</script>
