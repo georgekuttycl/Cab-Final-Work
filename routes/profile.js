@@ -14,9 +14,29 @@ router.post('/passenger/createProfile', controller.profilePost);
 router.get('/passenger/profile', profileController.getProfile);
 
 
-router.get('/passenger/updateprofile', profileController.getUpdateProfile);
+router.get('/passenger/updateprofile/:id', profileController.getUpdateProfile);
+router.post('/passenger/updateprofile/:id', profileController.getUpdateProfilePost);
 
 router.get('/passenger/booking', bookingController.getBooking);
+router.post('/passenger/booking', bookingController.createBooking);
+
+
+router.get('/passenger/bookingview', bookingController.getBookingView);
+
+router.get('/passenger/bookinglist', bookingController.getBookingList);
+
+router.get('/passenger/bookinglist/:id', bookingController.UpdateBookingList);
+router.post('/passenger/bookinglist/:id', bookingController.updateBooking);
+
+router.get('/passenger/bookinglist/delete/:id', bookingController.delete);
+
+
+
+router.get('/passenger/payment', bookingController.getPayement);
+
+
+
+
 
 
 module.exports = router;

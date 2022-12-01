@@ -1,4 +1,4 @@
-const login = require('../models/login');
+const login = require('../models/models').login;
 
 module.exports = async (req, res, next) => {
     req.identity = {

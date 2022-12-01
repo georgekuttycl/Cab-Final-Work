@@ -45,6 +45,8 @@ app.use("/", (req, res, next)=>{
         if(!context)
             context = {}
 
+        // console.log('✔✔✔', Object.keys(context.data.dataValues.login.dataValues));
+        console.log(context.passenger)
         context.identity = req.identity;
         hbs.renderView(path.join(__dirname, 'views', template + '.handlebars'), {
             layout: path.join(__dirname, 'views', 'layouts', 'main.handlebars'),

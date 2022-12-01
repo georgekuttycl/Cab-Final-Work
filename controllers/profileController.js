@@ -1,5 +1,7 @@
-const passenger = require("../models/passenger");
-const Login = require("../models/login");
+// const passenger = require("../models/passenger");
+// const Login = require("../models/login");
+
+const {passenger, Login, login} = require('../models/models');
 const { json } = require("body-parser");
 const { QueryTypes } = require('sequelize');
 
@@ -10,37 +12,52 @@ module.exports.showProfile = (req, res, next) => {
 
 
   module.exports.getProfile = async (req, res, next) => {
-    // passenger.findOne({
-    //     model: Login, as: 'Login'
-    // }).then(movies => {
-    //     console.log("movies", movies.get({plain: true}));
-    //     console.table(movies.dataValues)
+    passenger.findOne({
+      include: 'login',
+      required:true
+    }).then(movies => {
+        // console.log("movies", movies.get({plain: true}));
+        // console.log("movies", movies);
+        res.render('profile', {
+            data: movies,
+        });
+    });
 
-    //     res.render('profile', {
-    //         data: movies,
-    //     });
-    // });
-    // await sequelize.query(
-    //     'select * from passengers p inner join logins l on l.id=p.loginId where id=1',
-    //   );
+}
+
+//   module.exports.getUpdateProfile = async(req, res, next) => {
+//     passenger.findByPk(req.params.id)
+//         .then(profileFromDb => {
+//             res.render('updateProfile', {
+//                 data: profileFromDb
+//             });
+//         });
+// }
+
+module.exports.getUpdateProfile = async (req, res, next) => {
+  passenger.findByPk(req.params.id,{
+    include: 'login',
+    required:true
+  }).then(profileFromDb => {
+      res.render('updateProfile', {
+          data: profileFromDb,
+      });
+  });
+
 }
 
 
-// module.exports.getProfile = (req, res, next) => {
-//     login.findAll({
-//         where: {
-//             id: 7
-//           }
-//     }).then(result => {
-//         console.log(result);
-//         res.render('sample', {
-//             data: result
-//         });
-//     })
-// }
-
-module.exports.getUpdateProfile = (req, res, next) => {
-    res.render("updateProfile");
-  };
-
-
+module.exports.getUpdateProfilePost = async (req, res, next) => {
+  await passenger.update(
+      {
+        address: req.body.street,
+        city: req.body.city,
+        state: req.body.state,
+        zipCode: req.body.zip
+      },
+      {
+          where: {passengerId: req.params.id}
+      }
+  )
+  res.redirect('/passenger/profile');
+}

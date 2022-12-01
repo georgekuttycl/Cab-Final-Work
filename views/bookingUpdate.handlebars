@@ -15,9 +15,9 @@
         <div class="form-wrapper">
         <fieldset class="section is-active" style="width: 676px;">
           <h3>Your Details</h3>
-          <input type="text" name="from" id="from" placeholder="From">
-          <input type="text" name="to" id="to" placeholder="To">
-           <input type="text" name="mobile" id="password" placeholder="Mobile Number">
+          <input type="text" name="from" id="from" placeholder="From"- value="{{data.data.dataValues.from}}">
+          <input type="text" name="to" id="to" placeholder="To" value="{{data.data.dataValues.to}}">
+           <input type="text" name="mobile" id="password" placeholder="Mobile Number" value="{{data.data.dataValues.mobileNumber}}">
           <div class="button">Next</div>
         </fieldset>
         <fieldset class="section" style="width: 676px;">
@@ -45,7 +45,7 @@
         <fieldset class="section" style="width: 676px;">
           <h3>Request Created!</h3>
           <p>Your ride has now been initiated.</p>
-          <button type="submit" class="button">Make Payment</div>
+          <button type="submit" class="button">Re-request</div>
         </fieldset>
         </div>
       </form>

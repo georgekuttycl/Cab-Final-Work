@@ -1,11 +1,5 @@
-const Login = require('./login')
-const bookings = require('./booking');
-const passenger = require('./passenger');
+const {login,booking,passenger} = require('./models')
 
-
-passenger.belongsTo(Login, {constraints: true, onDelete: 'CASCADE'});
-Login.hasOne(passenger);
-
-Login.sync({force: true});
-bookings.sync({force: true});
+login.sync({force: true});
+booking.sync({force: true});
 passenger.sync({force: true});

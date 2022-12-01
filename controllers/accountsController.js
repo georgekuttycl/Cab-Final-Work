@@ -1,4 +1,5 @@
-const db = require("../models/login");
+// const db = require("../models/login");
+const db = require('../models/models').login;
 
 //get login form
 module.exports.login = (req, res, next) => {
@@ -9,7 +10,7 @@ module.exports.getAdmin = (req, res, next) => {
 	res.render("adminIndex", { regError: false });
   };
 
-module.exports.loginPost = async (req, res, next) => {
+module.exports. loginPost = async (req, res, next) => {
 //   res.render("login");
 
   if (req.body.type == "signup") {

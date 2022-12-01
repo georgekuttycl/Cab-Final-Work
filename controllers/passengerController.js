@@ -1,4 +1,5 @@
-const db = require("../models/passenger");
+// const db = require("../models/passenger");
+const db = require("../models/models").passenger;
 
 module.exports.createProfile = (req, res, next) => {
     res.render("createProfile");
