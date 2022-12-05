@@ -3,7 +3,14 @@
     margin: 0;
     padding: 0;
   } */
+.paymentBody{
+  background-image: url('/static/images/payment.jpg');
+  background-size: cover;
+  position: relative;
+  bottom: 9em;
+  height: 52em;
 
+}
   html {
     box-sizing: border-box;
   }
@@ -522,7 +529,7 @@
   form ::-moz-selection {
     background: rgba(253, 218, 134, 0.6);
   }
-  form button {
+  form a button {
     position: relative;
     overflow: hidden;
     padding: 10px;
@@ -541,7 +548,7 @@
     position: relative;
     z-index: 2;
   }
-  form button:after {
+  form a button:after {
     transform: translate(-50%, -50%);
     content: "";
     background: #e19d3c;

@@ -1,4 +1,5 @@
 const login = require('../models/models').login;
+const pickup = require('../models/models').pickup;
 
 module.exports = async (req, res, next) => {
     req.identity = {

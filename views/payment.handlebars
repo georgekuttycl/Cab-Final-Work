@@ -1,6 +1,6 @@
 {{>navbar}}
 <link rel="stylesheet" href="/static/css/payment.css"/>
-
+<div class="paymentBody">
 <h1>Choose Payment</h1>
 <p id="choosen-paymenttype">Credit Card</p>
 <ul class="payment-types">
@@ -47,19 +47,18 @@
             <div class="card-content">
               <div class="credit-card-type"></div>
               <div class="card-number">
-                <span>1234 1234 1234 1234</span>
+                <span>4111 1111 1111 1111</span>
                 <span>1234 1234 1234 1234</span>
               </div>
               <div class="card-holder">
                 <em>Card holder</em>
-                <span>Your Name</span>
-                <span>Your Name</span>
+                <span>{{data.identity.user.firstname}} {{data.identity.user.lastname}}</span>
               </div>
               <div class="validuntil">
                 <em>Expire</em>
                 <div class="e-month">
                     <span>
-                      MM
+                      04
                     </span>
                     <span>
                       MM
@@ -75,7 +74,7 @@
                 </div>
                 <div class="e-year">
                     <span>
-                      YY
+                      2026
                     </span>
                     <span>
                       YY
@@ -102,16 +101,14 @@
                 <span>4111 1111 1111 1111</span>
               </div>
               <div class="card-holder">
-                <span>Your Name</span>
-                <span>Your Name</span>
+                <span>{{data.identity.user.firstname}} {{data.identity.user.lastname}}</span>
+                {{!-- <span>Your Name</span> --}}
               </div>
               <div class="validuntil">
+
                 <span>
-                  <strong class="e-month">MM</strong> /                 <strong class="e-year">YY</strong>
-                </span>
-                <span>
-                  <strong class="e-month">MM</strong> /
-                  <strong class="e-year">YY</strong>
+                  <strong class="e-month">04</strong> /
+                  <strong class="e-year">2026</strong>
                 </span>
               </div>
             </div>
@@ -123,12 +120,12 @@
     <form>
       <div class="form-content">
         <div class="field">
-          <input type="tel" id="cardnumber" maxlength="20" />
+          <input type="tel" id="cardnumber" maxlength="20" value="4111 1111 1111 1111"/>
           <span class="focus-bar"></span>
           <label for="cardnumber">Card number</label>
         </div>
         <div class="field">
-          <input type="text" autocorrect="off" spellcheck="false" id="cardholder" maxlength="25" />
+          <input type="text" autocorrect="off" spellcheck="false" id="cardholder" maxlength="25" value="{{data.identity.user.firstname}} {{data.identity.user.lastname}}" />
           <span class="focus-bar"></span>
           <label for="cardholder">Card holder (Name on card)</label>
         </div>
@@ -137,25 +134,32 @@
             <label for="expires-month">Expire (Valid until)</label>
             <div class="field expire-date">
               <div>
-                <input type="tel" id="expires-month" placeholder="MM" allowed-pattern="[0-9]" maxlength="2">
+                <input type="tel" id="expires-month" placeholder="MM" allowed-pattern="[0-9]" maxlength="2" value="04">
                 <span class="focus-bar"></span>
               </div>
               <div class="divider">/</div>
               <div>
-                <input type="tel" id="expires-year" placeholder="YY" allowed-pattern="[0-9]" maxlength="2">
+                <input type="tel" id="expires-year" placeholder="YY" allowed-pattern="[0-9]" maxlength="2" value="2026">
                 <span class="focus-bar"></span>
               </div>
             </div>
           </div>
           <div class="col-50">
             <div class="field ccv">
-              <input type="tel" id="ccv" autocomplete="off" maxlength="3" />
+              <input type="tel" id="ccv" autocomplete="off" maxlength="3" value="344"/>
               <span class="focus-bar"></span>
               <label for="ccv">CCV</label>
             </div>
           </div>
+            <div class="field">
+          <input type="text" autocorrect="off" spellcheck="false" id="cardholder" maxlength="25" value="Rs {{data.amount}}" />
+
+          <span class="focus-bar"></span>
+          <label for="cardholder">Pay  {{data.amountId}}</label>
         </div>
-        <button><span>Submit</span></button>
+        </div>
+
+       <a  href="/passenger/invoice/{{data.pickId}}" <button><span>Submit</span></button>
       </div>
     </form>
     </div>
@@ -185,7 +189,7 @@
      </div>
   </li>
 </ul>
-
+</div>
 <script>
     (function payment() {
   var d = document,

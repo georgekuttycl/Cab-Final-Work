@@ -4,6 +4,7 @@ const loginRoute = require('./routes/accounts');
 const indexRoute = require('./routes/index');
 const profileRoute = require('./routes/profile');
 const bookingRoute = require('./routes/book');
+const adminRoute = require('./routes/pickup');
 const path = require('path');
 const cookieSession = require('cookie-session');
 const {engine, create} = require('express-handlebars');
@@ -60,10 +61,12 @@ app.use("/", (req, res, next)=>{
     }
 
     next();
-})
+});
+app.use(adminRoute);
 app.use(loginRoute);
 app.use(indexRoute);
 app.use(profileRoute);
-// app.use(bookingRoute);
+
+app.use(bookingRoute);
 
 app.listen(80);

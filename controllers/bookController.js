@@ -1,4 +1,4 @@
-const {passenger, booking, login} = require('../models/models');
+const {passenger, booking, login,pickup} = require('../models/models');
 const { json } = require("body-parser");
 const { QueryTypes } = require('sequelize');
 
@@ -24,8 +24,25 @@ module.exports.getBooking = (req, res, next) => {
             loginId: req.identity.user.id
         })
         .then(movieFromDb => {
-            res.redirect("/passenger/payment");
+          const pickupPoint=req.body.from;
+          const destination=req.body.to;
+          console.log(pickupPoint)
+          pickup.findOne({
+              where: {pickupPoint:pickupPoint,destination:destination}
         })
+        .then(amount=>{
+          console.log(amount.amount)
+          console.log(amount.pickId)
+              res.render("payment",{
+                  amount:amount.amount,
+                  pickId:amount.pickId,
+                  pickupPoint : amount.pickupPoint,
+                  destination:amount.destination,
+
+              })
+          })
+
+})
 }
 
 module.exports.getBookingList = async (req, res, next) => {
@@ -78,4 +95,21 @@ module.exports.delete = async (req, res, next) => {
       });
       res.redirect("/passenger/bookinglist");
   }
+}
+module.exports.getInvoice = (req, res, next)=>{
+  res.render('invoice'),{
+
+  }
+}
+//invoice
+
+module.exports.getInvoice =(req,res,next)=>{
+  pickup.findByPk(req.params.id)
+
+  .then(movieFromDb => {
+      res.render('invoice', {
+          data: movieFromDb
+      });
+
+  });
 }

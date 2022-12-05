@@ -1,0 +1,125 @@
+<link rel="stylesheet" href="/static/css/invoice.css"/>
+<link rel="stylesheet" href="/static/css/loader.css"/>
+<div class="preloader">
+    <div class="loader">
+        <div class="loader-outter"></div>
+        <div class="loader-inner"></div>
+
+        <div class="indicator">
+           <img src="https://cdn.dribbble.com/users/1280935/screenshots/6974685/media/ec4c386222b837da0ff6eabec3f59ba3.gif" width="200" height="200"/>
+        </div>
+    </div>
+</div>
+{{>navbar}}
+<br/>
+<div class="text-center">
+  <button type="submit" class="btn btn-primary" id="download-button">Download</button>
+</div>
+<br/>
+    <section class="main-pd-wrapper" style="width: 450px; margin: auto" id="body">
+      <div style="
+                  text-align: center;
+                  margin: auto;
+                  line-height: 1.5;
+                  font-size: 14px;
+                  color: #4a4a4a;
+                ">
+             <img src="/static/images/lwakxzzc-removebg-preview - Copy.png" width="100" height="100"/>
+
+                <p style="font-weight: bold; color: #000; margin-top: 15px; font-size: 18px;">
+                  Tax Invoice/Bill Of Supply CMS <br> Private Limited
+                </p>
+                <p style="margin: 15px auto;">
+                  A2, Test Street <br>
+                  Test Area Bangaluru 560001, Karnataka
+                </p>
+                <p>
+                  <b>GSTIN:</b> 0987653456789
+                </p>
+                <p>
+                  <b>CIN:</b> 0987653456789
+                </p>
+                <p>
+                  <b>FSSAI No. :</b> 0987653456789
+                </p>
+                <hr style="border: 1px dashed rgb(131, 131, 131); margin: 25px auto">
+              </div>
+              <table style="width: 100%; table-layout: fixed">
+                <thead>
+                  <tr>
+                    <th style="width: 220px;">From</th>
+                    <th>To</th>
+                    <th style="text-align: right; padding-right: 0;">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="invoice-items">
+
+                    <td >{{data.data.dataValues.pickupPoint}}</td>
+                    <td>{{data.data.dataValues.destination}}</td>
+                    <td style="text-align: right;">₹{{data.data.dataValues.amount}}</td>
+                  </tr>
+
+
+                </tbody>
+              </table>
+
+              <table style="width: 100%;
+              background: #fcbd024f;
+              border-radius: 4px;">
+                <thead>
+                  <tr>
+                    <th>Total</th>
+                    {{!-- <th style="text-align: center;">Item (10)</th> --}}
+                    <th>&nbsp;</th>
+                    <th style="text-align: right;">₹ {{data.data.dataValues.amount}}</th>
+
+                  </tr>
+                </thead>
+
+              </table>
+
+              <table style="width: 100%;
+              margin-top: 15px;
+              border: 1px dashed #00cd00;
+              border-radius: 3px;">
+                <thead>
+                  <tr>
+                    <td>Total Saving In Rs: </td>
+                    <td style="text-align: right;">₹ {{data.data.dataValues.amount}}</td>
+                  </tr>
+                  <tr>
+                    <td>Total Saving In %: </td>
+                    <td style="text-align: right;">32%</td>
+                  </tr>
+                </thead>
+
+              </table>
+
+    </section>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+			const button = document.getElementById('download-button');
+
+			function generatePDF() {
+				// Choose the element that your content will be rendered to.
+				const element = document.getElementById('body');
+				// Choose the element and save the PDF for your user.
+				html2pdf().from(element).save();
+			}
+
+			button.addEventListener('click', generatePDF);
+		</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script>
+$(window).on('load', function() {
+    //for use in production please remove this setTimeOut
+    setTimeout(function(){
+        $('.preloader').addClass('preloader-deactivate');
+    }, 3000);
+    //uncomment this line for use this snippet in production
+    //	$('.preloader').addClass('preloader-deactivate');
+});
+
+</script>

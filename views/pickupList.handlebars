@@ -1,0 +1,39 @@
+{{>adminNavbar}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css"/>
+<div class="container mt-4">
+<table id="example" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+             {{#each data.data}}
+            <tr>
+                <td>{{this.dataValues.pickupPoint}}</td>
+                <td>{{this.dataValues.destination}}</td>
+                <td>{{this.dataValues.amount}}</td>
+                <td>
+                     <a href="/admin/pickupList/{{this.dataValues.pickId}}"><button class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i> Edit</button></a> |
+                <a href="/admin/pickupList/delete/{{this.dataValues.pickId}}" class="text-danger" onclick="return confirm('Are you sure you want to delete this')"><button class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</button></a>
+                </td>
+
+            </tr>
+             {{/each}}
+        </tbody>
+
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+    $('#example').DataTable();
+});
+    </script>

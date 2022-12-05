@@ -61,7 +61,14 @@
                 </ul>
                 {{/if}}
                  {{#if data.identity.isDriver}}
-                <a href="/profile" id="alink4">Driver Profile</a>
+                  <a id="Booking" class="dropdown-toggle" type="text" data-bs-toggle="dropdown" aria-expanded="false">
+                   Driver Profile
+                </a>
+                 <ul class="dropdown-menu">
+                     <li><a class="dropdown-item" href="/driver/create">Create Profile</a></li>
+                    <li><a class="dropdown-item" href="/driver/Profile">Show Profile</a></li>
+                    <li><a class="dropdown-item" href="/driver/updateprofile">Update Profile</a></li>
+                </ul>
                 {{/if}}
                 {{/if}}
 
