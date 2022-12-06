@@ -1,7 +1,7 @@
 const {login,booking,passenger,driver,pickup} = require('./models')
 
-login.sync({force: true});
-booking.sync({force: true});
-passenger.sync({force: true});
-driver.sync({force: true});
-pickup.sync({force: true});
+login.sync({alter: true});
+driver.sync({alter: true});
+passenger.sync({alter: true});
+booking.sync({alter: true});
+pickup.sync({alter: true});

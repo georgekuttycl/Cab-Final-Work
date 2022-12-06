@@ -2,6 +2,7 @@ const express = require('express');
 const controller = require('../controllers/passengerController');
 const profileController = require('../controllers/profileController');
 const bookingController = require('../controllers/bookController');
+const adminController = require('../controllers/adminController');
 const cc = require('../controllers/adminController');
 
 
@@ -52,7 +53,8 @@ router.post('/driver/updateprofile/:id', profileController.getUpdateDriverProfil
 //admin controller
 //add pickup
 
-
+//admin home
+router.get('/admin/dashboard',adminController.getadminDashboard)
 
 
 module.exports = router;

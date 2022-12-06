@@ -105,7 +105,7 @@ module.exports.getUpdateDriverProfilePost = async (req, res, next) => {
   await driver.update(
       {
         address: req.body.street,
-        lisence:req.body.street,
+        lisence:req.body.lisence,
         city: req.body.city,
         state: req.body.state,
         zipCode: req.body.zip

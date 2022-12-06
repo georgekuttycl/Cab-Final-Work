@@ -66,7 +66,6 @@ app.use(adminRoute);
 app.use(loginRoute);
 app.use(indexRoute);
 app.use(profileRoute);
-
 app.use(bookingRoute);
 
 app.listen(80);

@@ -113,3 +113,48 @@ module.exports.getInvoice =(req,res,next)=>{
 
   });
 }
+
+//check rides for driver
+
+module.exports.checkRides=(req,res,next)=>{
+booking.findAll({
+  where: {
+    status:'1'
+  }
+})
+.then(result=>{
+  res.render('checkForRides',{
+    data:result
+  });
+});
+}
+
+//accept driver
+module.exports.acceptOffer = async (req, res, next) => {
+  await booking.update(
+      {
+        status: "2",
+        driverDriverId:req.session.userId
+      },
+      {
+          where: {booking_id:req.params.id}
+      }
+  )
+  res.redirect('/driver/myrides');
+}
+
+//myRides
+
+module.exports.myRides=(req,res,next)=>{
+  booking.findAll({
+    where: {
+      status:'2',
+      driverDriverId:req.session.userId
+    }
+  })
+  .then(result=>{
+    res.render('myRides',{
+      data:result
+    });
+  });
+}

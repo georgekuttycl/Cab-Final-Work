@@ -1,0 +1,39 @@
+{{>navbar}}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css"/>
+<h1 class="text-center">My Rides</h1>
+<div class="container mt-4">
+<table id="example" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>From</th>
+                <th>To</th>
+                <th>Cab Type</th>
+                <th>Mobile</th>
+            </tr>
+        </thead>
+        <tbody>
+             {{#each data.data}}
+            <tr>
+                <td>{{this.dataValues.from}}</td>
+                <td>{{this.dataValues.to}}</td>
+                <td>{{this.dataValues.cabType}}</td>
+                <td>{{this.dataValues.mobileNumber}}</td>
+            </tr>
+             {{/each}}
+        </tbody>
+
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+    $('#example').DataTable();
+});
+    </script>
+
+

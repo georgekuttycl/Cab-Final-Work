@@ -1,0 +1,47 @@
+{{>adminNavbar}}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css"/>
+<h1 class="text-center">Booking Reports</h1>
+<div class="container mt-4">
+<table id="example" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Customer Name</th>
+                <th>Driver Name</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Cab Type</th>
+                <th>Mobile</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+             {{#each data.data}}
+            <tr>
+
+                <td>
+                        {{this.dataValues.login.dataValues.firstname}} {{this.dataValues.login.dataValues.lastname}}
+                </td>
+                <td>{{this.dataValues.driver.dataValues.login.dataValues.firstname}} {{this.dataValues.login.dataValues.lastname}}</td>
+                <td>{{this.dataValues.from}}</td>
+                <td>{{this.dataValues.to}}</td>
+                <td>{{this.dataValues.cabType}}</td>
+                <td>{{this.dataValues.mobileNumber}}</td>
+                <td>{{this.dataValues.createdAt}}</td>
+            </tr>
+             {{/each}}
+        </tbody>
+
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+    $('#example').DataTable();
+});
+    </script>
